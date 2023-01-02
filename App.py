@@ -35,7 +35,7 @@ class EmailSender(object):
 
     def __init__(self):
         self.email_sender = 'polnikr@gmail.com'
-        self.email_password = 'mywthulauaunjfnk'
+        self.email_password = ''
         self.email_receiver = "roman.polnik@azet.sk"
 
     def sendEmail(self):
