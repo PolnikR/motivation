@@ -23,7 +23,7 @@ class EmailSender(object):
         self.sender_email = "polnikr@gmail.com"
         self.receiver_email = "polnikr@gmail.com"
         self.port = 465
-        self.password = "25101991"
+        self.password = ""
         self.message = "hello Roman"
         self.server = smtplib.SMTP("smtp.gmail.com",  self.port)
 
