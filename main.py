@@ -9,8 +9,10 @@ from email.message import EmailMessage
 
 obj = App.WebScrapper()
 obj2 = App.EmailSender()
-
+obj3 = App.SmsSender()
 l=obj.getAllQuotes()
 print(l[1].text)
 
-obj2.sendEmail(obj.getAllQuotes()[5].text)
+#obj2.sendEmail(obj.getAllQuotes()[5].text)
+
+obj3.sendSMS("DEbil", '+421907474723')

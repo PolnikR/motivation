@@ -57,7 +57,7 @@ class SmsSender(object):
 
     def __init__(self):
         self.SID = 'AC3310973e3eeba419c573a312ce2ea348'
-        self.token = '14de2eb7e612006769db41662ec08c77'
+        self.token = ''
         self.fromNumber = '+13853757646'
 
     def sendSMS(self, quote, phoneNumber):
