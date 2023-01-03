@@ -11,10 +11,6 @@ obj = App.WebScrapper()
 obj2 = App.EmailSender()
 
 l=obj.getAllQuotes()
-print(l)
-obj.moveNext(l)
-obj.moveNext(l)
-obj.moveNext(l)
-obj.moveNext(l)
+print(l[1].text)
 
-#obj2.sendEmail()
+obj2.sendEmail(obj.getAllQuotes()[5].text)

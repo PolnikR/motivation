@@ -3,12 +3,12 @@ import requests
 from bs4 import BeautifulSoup
 import smtplib, ssl
 from email.message import EmailMessage
+from twilio.rest import Client
 
 
 class WebScrapper(object):
 
-    global x
-    x=64
+
     def __init__(self, url="https://www.brainyquote.com/topics/motivation"):
 
         resp = requests.get(url)
@@ -23,11 +23,7 @@ class WebScrapper(object):
         return l
 
 
-    def moveNext(self, list):
 
-        if x < len(list):
-            x+=1
-            print(list[x].text)
 
 
 
@@ -38,12 +34,10 @@ class EmailSender(object):
         self.email_password = ''
         self.email_receiver = "roman.polnik@azet.sk"
 
-    def sendEmail(self):
+    def sendEmail(self, quote):
 
         subject = "Dont forget to subscribe"
-        body = """
-        Watch till the end"
-        """
+        body = quote
 
         em = EmailMessage()
         em['From'] = self.email_sender
@@ -57,6 +51,15 @@ class EmailSender(object):
             smtp.login(self.email_sender, self.email_password)
             smtp.sendmail(self.email_sender, self.email_receiver, em.as_string())
 
-class MoveQuote(object):
-    def nextQuote(self):
-        x=2
+
+
+class SmsSender(object):
+
+    def __init__(self):
+        self.SID = 'AC3310973e3eeba419c573a312ce2ea348'
+        self.token = '14de2eb7e612006769db41662ec08c77'
+        self.fromNumber = '+13853757646'
+
+    def sendSMS(self, quote, phoneNumber):
+        cl = Client(self.SID, self.token)
+        cl.messages.create(body=quote, from_=self.fromNumber, to=phoneNumber)
