@@ -1,18 +1,31 @@
-# This is a sample Python script.
-from urllib.request import urlopen
-import requests
-from bs4 import BeautifulSoup
+import tkinter as tk
+from tkinter import messagebox
 import App
-import smtplib, ssl
-from email.message import EmailMessage
-
+import random
 
 obj = App.WebScrapper()
 obj2 = App.EmailSender()
 obj3 = App.SmsSender()
-l=obj.getAllQuotes()
-print(l[1].text)
+obj4 = App.SharePointListUpload()
 
-#obj2.sendEmail(obj.getAllQuotes()[5].text)
+list_name = obj.get_all_quotes()
 
-obj3.sendSMS("DEbil", '+421907474723')
+root = tk.Tk()
+root.title("Motivation quotes")
+root.geometry("800x500")
+
+
+def next_button_click(lst):
+    global number
+    number = random.randint(0, len(lst))
+
+
+
+button = tk.Button(root, text="Next", command=next_button_click)
+
+label = tk.Label(root, text="Motivation")
+label.pack()
+
+button.pack()
+
+root.mainloop()
